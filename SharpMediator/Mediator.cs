@@ -9,11 +9,15 @@ namespace SharpMediator {
 
         public static IMediator Default = new Mediator();
 
-        public void Subscribe<T>(object subscriber, Action<T> action) {
+        public void Subscribe<T>(object subscriber, Action<T> action, SubscriptionKind subscriptionKind) {
             lock (_sync) {
                 EnsureSubscribersList<T>();
                 _subscribers[typeof(T)].Add(new WeakDelegate(subscriber, action));
             }
+        }
+
+        public void Subscribe<T>(object subscriber, Action<T> action) {
+            Subscribe(subscriber, action, SubscriptionKind.Direct);
         }
 
         private void EnsureSubscribersList<T>() {
