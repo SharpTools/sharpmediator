@@ -8,7 +8,7 @@ namespace SharpMediator {
 
         public WeakDelegate(object actionOwner, Delegate action)
             : base(actionOwner) {
-            _method = action.Method;
+            _method = action.GetMethodInfo();
             _actionTarget = new WeakReference(action.Target);
         }
 
