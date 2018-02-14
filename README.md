@@ -9,7 +9,7 @@ Cool Mediator implementation using weak references
 
 ```
    var mediator = new Mediator();
-   mediator.Subscrive<SomeType>(this, SomeMethod);
+   mediator.Subscribe<SomeType>(this, SomeMethod);
 ```
 
 ### Publish!
